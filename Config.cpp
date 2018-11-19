@@ -29,16 +29,17 @@ bool Config::setDados(string s, Mapa& m, Jogador& j){
     int lin, col;
     string aux;
     char c, cc;
-    vector<vector<char>> mapa;
     
     f >> aux >> lin;
     f >> aux >> col;
+    
+    vector<vector<char>> mapa(lin);
     
     Consola::clrscr();
     for(int i=0; i<lin; i++){
         for(int j=0; j<=col; j++){
             f.get(c);
-            mapa[i][j] = c;
+            mapa[i].push_back(c);
             if(c == '.'){
                 Consola::setBackgroundColor(Consola::AZUL_CLARO);
                 cout << c << c;
@@ -73,7 +74,7 @@ bool Config::setDados(string s, Mapa& m, Jogador& j){
         cout << endl;
     }
     Consola::setBackgroundColor(Consola::BRANCO);
-    //m.setDados(mapa,lin,col);
+    m.setDados(mapa,lin,col);
     
     return true;
 }

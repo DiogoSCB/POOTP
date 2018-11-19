@@ -52,6 +52,7 @@ int main(int argc, char** argv) {
     Consola::gotoxy(0,0);
     cout << "Ajuda: " << endl;
     cout << "'sair' -> Terminar jogo" << endl;
+    cout << "'config <fich>' -> Abrir Jogo" << endl;
     while(true){
         cout << "> ";
         cin >> cmd;
