@@ -16,21 +16,14 @@
 Mapa::Mapa() {
 }
 
-Mapa::Mapa(int l, int c, string mapa):linhas(l),colunas(c),mapa(mapa) {
-}
-
 Mapa::Mapa(const Mapa& orig) {
 }
 
 Mapa::~Mapa() {
 }
 
-void Mapa::setDados(string a, int b, int c){
+void Mapa::setDados(vector<vector<char>> a, int b, int c){
     mapa = a;
     linhas = b;
     colunas = c;
-}
-
-string Mapa::GetMapa() const {
-    return mapa;
 }

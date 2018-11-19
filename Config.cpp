@@ -12,6 +12,7 @@
  */
 
 #include "Config.h"
+#include "Consola.h"
 
 Config::Config() {
 }
@@ -26,17 +27,53 @@ bool Config::setDados(string s, Mapa& m, Jogador& j){
     ifstream f(s);
     if(!f) return false;
     int lin, col;
-    string map, aux;
+    string aux;
+    char c, cc;
+    vector<vector<char>> mapa;
     
     f >> aux >> lin;
     f >> aux >> col;
     
-    getline(f, aux);
+    Consola::clrscr();
     for(int i=0; i<lin; i++){
-        getline(f, aux);
-        map += aux + "\n";
+        for(int j=0; j<=col; j++){
+            f.get(c);
+            mapa[i][j] = c;
+            if(c == '.'){
+                Consola::setBackgroundColor(Consola::AZUL_CLARO);
+                cout << c << c;
+            }else if(c == '+'){
+                Consola::setBackgroundColor(Consola::VERDE_CLARO);
+                cout << c << c;
+            }else if(c == 'a' || c == 'b'){
+                Consola::setBackgroundColor(Consola::VERMELHO_CLARO);
+                cout << c << ' ';
+            }else if(c == 'A' || c == 'B'){
+                Consola::setBackgroundColor(Consola::CYAN_CLARO);
+                cout << c << ' ';
+            }
+        }
+        cout << endl;
+        for(int k=1; k<=col; k++){
+            cc = mapa[i][k];
+            if(cc == '.'){
+                Consola::setBackgroundColor(Consola::AZUL_CLARO);
+                cout << cc << cc;
+            }else if(cc == '+'){
+                Consola::setBackgroundColor(Consola::VERDE_CLARO);
+                cout << cc << cc;
+            }else if(cc == 'a' || cc == 'b'){
+                Consola::setBackgroundColor(Consola::VERMELHO_CLARO);
+                cout << ' ' << ' ';
+            }else if(cc == 'A' || cc == 'B'){
+                Consola::setBackgroundColor(Consola::CYAN_CLARO);
+                cout << ' ' << ' ';
+            }
+        }
+        cout << endl;
     }
-    m.setDados(map,lin,col);
+    Consola::setBackgroundColor(Consola::BRANCO);
+    //m.setDados(mapa,lin,col);
     
     return true;
 }

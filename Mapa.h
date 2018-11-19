@@ -17,17 +17,14 @@
 #include "Porto.h"
 
 class Mapa {
-    string mapa;
-    int linhas, colunas;
+    vector<vector<char>> mapa;
+    int linhas, colunas;    
     vector<Porto> portos;
 public:
     Mapa();
-    Mapa(int l, int c, string mapa);
     Mapa(const Mapa& orig);
     virtual ~Mapa();
-    void setDados(string a, int b, int c);
-    string GetMapa() const;
-    
+    void setDados(vector<vector<char>> a, int b, int c);
 private:
 
 };

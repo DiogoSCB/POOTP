@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
     Consola::setBackgroundColor(Consola::BRANCO);
     Consola::setTextColor(Consola::PRETO);
     //Tamanho consola
-    Consola::setScreenSize(25,60);
+    Consola::setScreenSize(30,70);
     //Limpar Consola
     Consola::clrscr();
     
@@ -65,17 +65,13 @@ int main(int argc, char** argv) {
             if(!cfg.setDados(nomeFich, map, jog)){
                 cout << "Erro ao ler ficheiro!" << endl; break;
             }
-            Consola::clrscr();
-            Consola::gotoxy(0,0);
-            cout << map.GetMapa();
-            Consola::gotoxy(0,10);
+//            Consola::clrscr();
+//            cout << map.GetMapa();
             fase2 = true;
             break;
             
             case 3: cin >> tipo;
-            if(tipo == 'V' || tipo == 'G' || tipo == 'E' || tipo == 'F'){
-                
-            }else cout << "Tipo de Navio errado!";
+            jog.comprarNavio(tipo);
             break;   
             
             default: cout << "Comando Desconhecido" << endl;
